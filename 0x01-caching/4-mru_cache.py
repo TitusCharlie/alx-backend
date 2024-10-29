@@ -3,6 +3,7 @@
 
 from base_caching import BaseCaching
 
+
 class MRUCache(BaseCaching):
     """ MRU caching system with a limit """
 
@@ -13,7 +14,8 @@ class MRUCache(BaseCaching):
     def put(self, key, item):
         """ Add item to cache using MRU policy """
         if key and item:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS \
+                                and key not in self.cache_data:
                 print(f"DISCARD: {self.most_recent}")
                 del self.cache_data[self.most_recent]
             self.cache_data[key] = item
