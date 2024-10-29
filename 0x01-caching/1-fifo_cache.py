@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ FIFOCache module """
 
-
 from base_caching import BaseCaching
+
 
 class FIFOCache(BaseCaching):
     """ FIFO caching system with a limit """
@@ -14,7 +14,8 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """ Add item to cache using FIFO policy """
         if key and item:
-            if key not in self.cache_data and len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            if key not in self.cache_data and len(
+                                self.cache_data) >= BaseCaching.MAX_ITEMS:
                 first_key = self.order.pop(0)
                 print(f"DISCARD: {first_key}")
                 del self.cache_data[first_key]
